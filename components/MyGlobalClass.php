@@ -17,8 +17,9 @@ class MyGlobalClass extends \yii\base\Component{
         $json = file_get_contents($this->ip.':7678/tv/category.php');
         }
         $category = json_decode($json, true);
+        Yii::$app->session->set('category',$category);
         //var_dump($category);
-        var_dump(Yii::$app->session->set('category',$category));
+        var_dump(Yii::$app->session->get('category'));
         parent::init();
     }
 }
