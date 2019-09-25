@@ -10,8 +10,10 @@ class MyGlobalClass extends \yii\base\Component{
     public function init() {
 
         $session=Yii::$app->session->open();
-        if($session->get('category')!="")
+        $session->set('category','');
+        if(empty($session->get('category'))){
         $json = file_get_contents($this->ip.':7678/tv/category.php');
+        }
         $category = json_decode($json, true);
         //var_dump($category);
         Yii::$app->session->set('category',$category);
