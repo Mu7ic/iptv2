@@ -9,14 +9,16 @@ class MyGlobalClass extends \yii\base\Component{
 
     public function init() {
 
-        $session=Yii::$app->session->open();
-        $session->set('category','');
-        if(empty($session->get('category'))){
+        session_start();
+        //$session=Yii::$app->session->open();
+        //$session->set('category','');
+        $_SESSION['category']="";
+        if(empty($_SESSION['category'])){
         $json = file_get_contents($this->ip.':7678/tv/category.php');
         }
         $category = json_decode($json, true);
         //var_dump($category);
-        Yii::$app->session->set('category',$category);
+        $_SESSION['category']=$category;
         //echo Yii::$app->session->get('category');
         parent::init();
     }
