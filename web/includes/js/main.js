@@ -147,7 +147,7 @@
 // --------------------------------------------------------------------- //
 function read_channels () {
 	$.ajax({
-		url: 'https://robita.tj/channel.php',
+		url: 'http://192.168.100.104:7678/tv/get_channel.php',
 		type: 'GET',
 		success: function (data) {
 
@@ -200,14 +200,14 @@ function read_channels () {
 			if (n.length > 0) {
 
 				//$('#allchannels').html('<div class="col-12"><div class="title">Все каналы</div></div>' + html_channel);
-				$('#recomended').html(html_channel_rec);
+				//$('#recomended').html(html_channel_rec);
 				if (html_channel_fav != "") {
 					$('#favorites').html(html_channel_fav);
 				}else{
 					$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
 				}
 			} else{
-				//$('#allchannels').html('<div class="col-12"><p>Нет данных...</p></div>');
+				$('#allchannels').html('<div class="col-12"><p>Нет данных...</p></div>');
 				$('#recomended').html('<div class="col-12"><p>Нет данных...</p></div>');
 				$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
 			}
@@ -235,7 +235,7 @@ read_channels();
         $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
         var p = $(this).parent();
         var a = {};
-        alert()
+
 
         if (Cookies.get('ch-favorites')) {
             a = JSON.parse(Cookies.get('ch-favorites'));
@@ -246,6 +246,7 @@ read_channels();
             a[p.children('a').attr('data-id')] = p.children('a').attr('data-id');
         }
         Cookies.set('ch-favorites', JSON.stringify(a));
+
     });
 
 

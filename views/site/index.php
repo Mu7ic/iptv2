@@ -6,6 +6,18 @@ use yii\helpers\Url;
 
 $this->title = 'Главная IpTv';
 
+//if (!isset(Yii::$app->request->cookies['test'])) {
+//    Yii::$app->response->cookies->add(new \yii\web\Cookie([
+//        'name' => 'test',
+//        'value' => 'testValue'
+//    ]));
+//}
+
+// В view выводим куки
+echo $_COOKIE['ch-favorites'];
+// или
+echo Yii::$app->request->cookies->getValue('ch-favorites');
+
 ?>
 <div class='container'>
     <div class='pr-lg-3 pl-lg-3'>

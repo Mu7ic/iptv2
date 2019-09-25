@@ -15,12 +15,13 @@ $config = [
     ],
     //'bootstrap' => ['log','MyGlobalClass'],
     'components' => [
-        'MyGlobalClass'=>[
-            'class'=>'app\components\MyGlobalClass'
-        ],
+        //'MyGlobalClass'=>[
+        //    'class'=>'app\components\MyGlobalClass'
+        //],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '0dRiYXydyy9jTa7p7zFes9-WNpbcyroH',
+            'enableCsrfValidation' => false,
             //'baseUrl' => ''
         ],
         'cache' => [
