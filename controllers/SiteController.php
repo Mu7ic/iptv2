@@ -13,6 +13,8 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
     public $layout="general";
+
+    public $ip="http://217.11.179.169";
     /**
      * {@inheritdoc}
      */
@@ -62,7 +64,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $json = file_get_contents('http://192.168.100.104:7678/tv/get_channel.php');
+        $json = file_get_contents($this->ip.':7678/tv/get_channel.php');
         $obj = json_decode($json, true);
 
         return $this->render('index',['obj'=>$obj]);
@@ -70,7 +72,7 @@ class SiteController extends Controller
 
     public function actionCategory($category)
     {
-        $json = file_get_contents('http://192.168.100.104:7678/tv/category.php?category='.$category);
+        $json = file_get_contents($this->ip.':7678/tv/category.php?category='.$category);
         $obj = json_decode($json, true);
         return $this->render('category',['obj'=>$obj]);
     }
@@ -140,7 +142,7 @@ class SiteController extends Controller
     public function actionSingle($id)
     {
         date_default_timezone_set();
-        $json = file_get_contents('http://192.168.100.104:7678/tv/programm.php?id=' . $id);
+        $json = file_get_contents($this->ip.':7678/tv/programm.php?id=' . $id);
         $obj = json_decode($json, true);
 
         $date_now = date('Y-m-d');
