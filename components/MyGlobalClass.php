@@ -9,8 +9,8 @@ class MyGlobalClass extends \yii\base\Component{
 
     public function init() {
 
-        session_start();
-        //$session=Yii::$app->session->open();
+        //session_start();
+        Yii::$app->session->open();
         //$session->set('category','');
         $_SESSION['category']="";
         if(empty($_SESSION['category'])){
@@ -18,8 +18,7 @@ class MyGlobalClass extends \yii\base\Component{
         }
         $category = json_decode($json, true);
         //var_dump($category);
-        $_SESSION['category']=$category;
-        //echo Yii::$app->session->get('category');
+        Yii::$app->session->set('category',$category);
         parent::init();
     }
 }
