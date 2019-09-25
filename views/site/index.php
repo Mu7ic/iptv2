@@ -14,9 +14,10 @@ $this->title = 'Главная IpTv';
 //}
 
 // В view выводим куки
-echo $_COOKIE['ch-favorites'];
+//echo $_COOKIE['ch-favorites'];
 // или
-echo Yii::$app->request->cookies->getValue('ch-favorites');
+//echo Yii::$app->request->cookies->getValue('ch-favorites');
+echo Yii::$app->session->set('category',$category);
 
 ?>
 <div class='container'>
