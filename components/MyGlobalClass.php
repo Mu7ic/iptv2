@@ -18,7 +18,7 @@ class MyGlobalClass extends \yii\base\Component{
         }
         $category = json_decode($json, true);
         //var_dump($category);
-        Yii::$app->session->set('category',$category);
+        var_dump(Yii::$app->session->set('category',$category));
         parent::init();
     }
 }
