@@ -14,8 +14,8 @@ class SiteController extends Controller
 {
     public $layout="general";
 
-    public $ip="http://217.11.179.169";
-    //public $ip="http://192.168.100.104";
+    //public $ip="http://217.11.179.169";
+    public $ip="http://192.168.100.104";
     /**
      * {@inheritdoc}
      */
@@ -163,7 +163,7 @@ class SiteController extends Controller
         //echo '<pre>';
         //var_dump($today);
         //echo '</pre>';
-        return $this->render('single', ['today' => $today, 'tomorrow' => $tomorrow, 'after' => $after,'category_id'=>$obj['category_id'],'id'=>$obj['channleid'],'ip'=>$obj['ip']]);
+        return $this->render('single', ['today' => $today, 'tomorrow' => $tomorrow, 'after' => $after,'category_id'=>$obj['category_id'],'id'=>$obj['channleid'],'ip'=>/*$obj['ip']*/ '217.11.179.169']);
     }
 
     //public function
