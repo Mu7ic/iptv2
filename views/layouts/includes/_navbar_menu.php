@@ -1,0 +1,25 @@
+<?php
+//var_dump(Yii::$app->session->get('category'));
+
+$category=Yii::$app->session->get('category');
+
+?>
+
+<ul class="sub-nav collapse <?php  if(isset($_GET['category'])) echo "show"; ?>" id="categories">
+    <?php
+    foreach ($category as $cat){
+    ?>
+    <li <?php
+            if(isset($_GET['category'])){
+                if($_GET['category']==$cat['id'])
+                    echo 'class="active"';
+            }
+
+        ?> >
+        <a class='nav-link' href='<?= \yii\helpers\Url::to(['site/category','category'=>$cat['id']]) ?>'>
+            <span><?= $cat['name'] ?></span>
+        </a>
+    </li>
+    <?php } ?>
+
+</ul>
