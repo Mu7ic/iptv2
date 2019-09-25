@@ -13,7 +13,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    //'bootstrap' => ['log','MyGlobalClass'],
+    'bootstrap' => ['log','MyGlobalClass'],
     'components' => [
         'MyGlobalClass'=>[
             'class'=>'app\components\MyGlobalClass'
