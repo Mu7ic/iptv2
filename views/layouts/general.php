@@ -12,7 +12,7 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 
 //AppAsset::register($this);
-var_dump($categor=$_SESSION['category']);
+$categor=$_SESSION['category'];
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
