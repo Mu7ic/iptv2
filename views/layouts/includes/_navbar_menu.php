@@ -1,7 +1,9 @@
 <?php
 //var_dump(Yii::$app->session->get('category'));
 
-$category=Yii::$app->session->get('category');
+session_start();
+
+$category=$_SESSION['category'];
 
 ?>
 
