@@ -1,12 +1,10 @@
 <?php
 //var_dump(Yii::$app->session->get('category'));
-$categor=$_SESSION['category'];
-
 ?>
 
 <ul class="sub-nav collapse <?php  if(isset($_GET['category'])) echo "show"; ?>" id="categories">
     <?php
-    foreach ($categor as $cat){
+    foreach ($category as $cat){
     ?>
     <li <?php
             if(isset($_GET['category'])){
