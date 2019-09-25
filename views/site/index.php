@@ -17,7 +17,6 @@ $this->title = 'Главная IpTv';
 //echo $_COOKIE['ch-favorites'];
 // или
 //echo Yii::$app->request->cookies->getValue('ch-favorites');
-echo Yii::$app->session->set('category',$category);
 
 ?>
 <div class='container'>

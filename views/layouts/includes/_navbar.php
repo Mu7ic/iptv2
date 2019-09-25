@@ -1,6 +1,5 @@
 <?php
 use \yii\helpers\Url;
-$categor=$_SESSION['category'];
 ?>
 <div class='sidebar tn'>
     <div class='s-inner w-100 h-100 position-relative'>
@@ -24,7 +23,7 @@ $categor=$_SESSION['category'];
                             <i class="mdi mdi-monitor-multiple"></i>
                             <span>Категории</span>
                         </a>
-                        <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar_menu',['category'=>$categor]); ?>
+                        <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar_menu',['category'=>$category]); ?>
                     </li>
                 </ul>
             </div>

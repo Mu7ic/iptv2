@@ -3,7 +3,6 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -13,6 +12,7 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 
 //AppAsset::register($this);
+var_dump($categor=$_SESSION['category']);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ use yii\helpers\Url;
 <body class="tn collapsed">
 <?php $this->beginBody() ?>
 <?php //Pjax::begin(['timeout'=>30000]); ?>
-        <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar'); ?>
+        <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
 <div class='page-container tn'>
     <div class='top sn-page fixed tn'>

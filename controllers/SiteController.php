@@ -14,7 +14,8 @@ class SiteController extends Controller
 {
     public $layout="general";
 
-    public $ip="http://217.11.179.169";
+    //public $ip="http://217.11.179.169";
+    public $ip="http://192.168.100.104";
     /**
      * {@inheritdoc}
      */
