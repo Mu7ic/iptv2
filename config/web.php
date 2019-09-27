@@ -20,8 +20,9 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'enableCookieValidation' => true,
             'cookieValidationKey' => '0dRiYXydyy9jTa7p7zFes9-WNpbcyroH',
-            //'enableCsrfValidation' => false,
+            'enableCsrfValidation' => false,
             'baseUrl' => ''
         ],
         'cache' => [
@@ -69,7 +70,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'chanels'=>'site/index',
+                'all/chanels'=>'site/index',
                 'chanel/<id:\w+>'=>'site/single',
                 'favorits'=>'site/favorits',
                 'category/<category:\d+>'=>'site/category',

@@ -2,6 +2,9 @@
 
 	var lastScrollTop = 0;
 
+    var date = new Date();
+    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+
 	$(window).scroll(function () {
 		var st = $(this).scrollTop();
 		if ((window.innerWidth || document.documentElement.clientWidth) < 768) {
@@ -131,26 +134,28 @@
 			$("LINK[href='/assets/css/dark.css']").remove();
 		}
 	});
-function openFullscreen() {
-	if (elem.requestFullscreen) {
-		return elem.requestFullscreen();
-	} else if (elem.mozRequestFullScreen) {
-		elem.mozRequestFullScreen();
-	} else if (elem.webkitRequestFullscreen) {
-		elem.webkitRequestFullscreen();
-	} else if (elem.msRequestFullscreen) {
-		elem.msRequestFullscreen();
-	}
-} 
-function closeFullscreen() {
-	if (document.exitFullscreen) {
-		document.exitFullscreen();
-	} else if (document.mozCancelFullScreen) {
-		document.mozCancelFullScreen();
-	} else if (document.webkitExitFullscreen) {
-		document.webkitExitFullscreen();
-	} else if (document.msExitFullscreen) {
-		document.msExitFullscreen();
-	}
-}
+
+    $('.favorite').click(function () {
+        $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
+        var id = $(this).parent().attr('data-id');
+
+        $.ajax({
+            url: '/site/test',
+            type: 'POST',
+            data: {id: id},
+            success: function (data) {
+                //alert(data)
+                $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                    $("#success-alert").slideUp(500);
+                });
+			},
+            error: function(jqXHR, errMsg) {
+                // handle error
+                alert(errMsg);
+            }
+        });
+
+    });
+
+
 })(jQuery);

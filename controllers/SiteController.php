@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Cookie;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -14,8 +15,8 @@ class SiteController extends Controller
 {
     public $layout="general";
 
-    public $ip="http://217.11.179.169";
-    //public $ip="http://192.168.100.104";
+    //public $ip="http://217.11.179.169";
+    public $ip="http://192.168.100.104";
     /**
      * {@inheritdoc}
      */
@@ -76,6 +77,62 @@ class SiteController extends Controller
         $json = file_get_contents($this->ip.':7678/tv/category.php?category='.$category);
         $obj = json_decode($json, true);
         return $this->render('category',['obj'=>$obj]);
+    }
+
+    public function actionTest(){
+        $cookie_name="id_channels";
+        $cookie=Yii::$app->request->cookies;
+        $cookies = Yii::$app->response->cookies;
+        //unset(Yii::$app->request->cookies['test']);
+        if(Yii::$app->request->post()){
+          $array=[];
+          $id=Yii::$app->request->post('id');
+
+         // $cookies->remove($cookie_name);
+
+
+            if ($cookie->has($cookie_name)) {
+                $data = ["id" => $id];
+
+                $value = $cookie->get($cookie_name)->value;
+                $array = json_decode($value, true);
+
+                $key = array_search($id, array_column($array, 'id'));
+                if (is_int($key)) {
+                    //echo $key;
+                    array_splice($array, $key, 1);
+                    if (count($array) == 0){
+                        $cookies->remove($cookie_name);
+                    }else{
+                        //var_dump($array);
+                    $cookies->add(new Cookie([
+                        'name' => $cookie_name,
+                        'value' => json_encode($array),
+                        'domain' => 'iptv',
+                        'expire' => time() + 60*60*24*30,
+                    ]));
+                    }
+                }else {
+                    array_push($array, $data);
+                    $cookies->add(new Cookie([
+                        'name' => $cookie_name,
+                        'value' => json_encode($array),
+                        'domain' => 'iptv',
+                        'expire' => time() + 60*60*24*30,
+                    ]));
+                }
+
+            } else {
+                $array[0] = ["id" => $id];
+                $cookies->add(new Cookie([
+                    'name' => $cookie_name,
+                    'value' => json_encode($array),
+                    'domain' => 'iptv',
+                    'expire' => time() + 60*60*24*30,
+                ]));
+            }
+
+        }
     }
 
     public function actionFavorits()
@@ -163,7 +220,11 @@ class SiteController extends Controller
         //echo '<pre>';
         //var_dump($today);
         //echo '</pre>';
-        return $this->render('single', ['today' => $today, 'tomorrow' => $tomorrow, 'after' => $after,'category_id'=>$obj['category_id'],'id'=>$obj['channleid'],'ip'=>/*$obj['ip']*/ '217.11.179.169']);
+        return $this->render('single', ['today' => $today, 'tomorrow' => $tomorrow, 'after' => $after,'category_id'=>$obj['category_id'],
+            'id'=>$obj['channleid'],
+            'ip'=>$obj['ip'] /*'217.11.179.169'*/,
+            'name'=>$obj['name']
+        ]);
     }
 
     //public function

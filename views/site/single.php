@@ -5,10 +5,11 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Single Page';
+$this->title = $name;
 $this->params['breadcrumbs'][] = $this->title;
 Yii::$app->session->open();
 $channel = Yii::$app->session->get('channel');
+$epgid = \app\models\Control::getCoockie();
 
 $month = [1 => 'Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май.', 'Июн.', 'Июл.', 'Авг.', 'Сен.', 'Окт.', 'Ноя.', 'Дек.'];
 $weeks = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -102,32 +103,10 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
                 if (!empty($channel)) {
                     foreach ($channel as $arr) {
 
-//                            echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
-//                            <div class="card">
-//                            <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">
-//                            <div class="channel position-relative w-100">
-//                            <div class="ch-img position-absolute">
-//                            <img src="' . Yii::$app->request->baseUrl . '/' . strtolower($arr['logo']) . '" alt="' . $arr['name'] . '">
-//                            </div>
-//                            <div class="ch-data h-100">
-//                            <h4 class="w-100">' . $arr['name'] . '</h4>
-//                            <p>' . $arr['current']['title'] . '</p>
-//                            <div class="progressbars">
-//                            <div class="before">' . date('H:i', strtotime($arr['current']['starttime'])) . '</div>
-//                                                <div class="after">' . date('H:i', strtotime($arr['current']['endtime'])) . '</div>
-//                            <div class="progress" start="10:25" stop="12:10">
-//                            <div class="progress-bar" role="progressbar" style="width: ' . \app\models\Control::getPercentTime($arr['current']['starttime'], $arr['current']['endtime']) . '%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-//                            </div>
-//                            </div>
-//                            </div>
-//                            </div>
-//                            </a><i class="fr favorite mdi mdi-bookmark-outline"></i>
-//                            </div></div>';
-
                         if ($arr['category'] == $category_id) {
                             if ($arr['epgid'] != $_GET['id']) {
                                 echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">';
-                                echo '<div class="card">';
+                                echo '<div class="card" data-id="' . $arr['epgid'] . '">';
                                 echo '<a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">';
                                 echo '<div class="channel position-relative w-100"> <div class="ch-img position-absolute">';
                                 echo '<img src="' . Yii::$app->request->baseUrl . '/' . strtolower($arr['logo']) . '" alt="' . $arr['name'] . '"></div>';
@@ -138,7 +117,10 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
                                 echo '<div class="after">' . date('H:i', strtotime($arr['current']['endtime'])) . '</div>';
                                 echo '<div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
                                 echo '</div></div></div></div></a>';
-                                echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+                                if(in_array($arr['epgid'],$epgid))
+                                    echo '<i class="fr favorite mdi mdi-bookmark"></i>';
+                                else
+                                    echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
                                 echo '</div></div>';
                             }
                         }

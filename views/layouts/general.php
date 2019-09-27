@@ -28,11 +28,16 @@ $categor=$_SESSION['category'];
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/fonts/mdi/css/materialdesignicons.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/style.css'>
-<!--    <script src="--><?php //Yii::$app->request->baseUrl; ?><!--/includes/js/jquery.min.js"></script>-->
+    <script src="<?php Yii::$app->request->baseUrl; ?>/includes/js/jquery.min.js"></script>
+
     <?php $this->head() ?>
 </head>
 <body class="tn collapsed">
 <?php $this->beginBody() ?>
+<div class="alert alert-success" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Успех! </strong> Видео добавлено в избранные.
+</div>
 <?php //Pjax::begin(['timeout'=>30000]); ?>
         <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
@@ -81,6 +86,13 @@ $categor=$_SESSION['category'];
 <?php $this->endBody() ?>
 </body>
 <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/app.js'></script>
+<?php //if(substr(Yii::$app->request->url,1,6)=="chanel"){ ?>
 <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/main.js'></script>
+<?php //}else {
+    ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/script.js'></script>
+<?php
+//} ?>
 </html>
 <?php $this->endPage() ?>

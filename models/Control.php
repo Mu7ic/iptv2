@@ -45,4 +45,16 @@ class Control
         return round($completed);
     }
 
+    public static function getCoockie(){
+        $cookie=\Yii::$app->request->cookies;
+
+        if($cookie->has("id_channels")){
+            $json=json_decode($cookie->get("id_channels")->value,true);
+            for($i=0;$i<=count($json)-1;$i++) {
+                $a[$i]=$json[$i]["id"];
+            }
+            return $a;
+        }
+    }
+
 }

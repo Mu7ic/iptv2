@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Url;
-
 $this->title = 'Главная IpTv';
 
 //if (!isset(Yii::$app->request->cookies['test'])) {
@@ -14,13 +13,20 @@ $this->title = 'Главная IpTv';
 //}
 
 // В view выводим куки
-//echo $_COOKIE['ch-favorites'];
+//unset($_COOKIE['id_channels']);
+//echo '<pre>';
+$epgid=\app\models\Control::getCoockie();
+//Yii::$app->request->cookies->removeAll();
+//var_dump(\app\models\Control::getCoockie());
+//echo '</pre>';
 // или
 //echo Yii::$app->request->cookies->getValue('ch-favorites');
 
 ?>
+
 <div class='container'>
     <div class='pr-lg-3 pl-lg-3'>
+        <?php //\yii\widgets\Pjax::begin(['timeout'=>5000]); ?>
         <div id="allchannels" class="row">
 
             <?php
@@ -40,8 +46,8 @@ $this->title = 'Главная IpTv';
                 Yii::$app->session->set('channel',$obj);
                 foreach ($obj as $arr) {
                     echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
-                    <div class="card">
-                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">
+                    <div class="card" data-id="' . $arr['epgid'] . '">
+                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" >
                     <div class="channel position-relative w-100">
                     <div class="ch-img position-absolute">
                     <img src="' .Yii::$app->request->baseUrl.'/'. strtolower($arr['logo']) . '" alt="'.$arr['name'].'">
@@ -58,12 +64,20 @@ $this->title = 'Главная IpTv';
                     </div>
                     </div>
                     </div>
-                    </a><i class="fr favorite mdi mdi-bookmark-outline"></i>
-                    </div></div>';
+                    </a>';
+                    if(in_array($arr['epgid'],$epgid))
+                        echo '<i class="fr favorite mdi mdi-bookmark"></i>';
+                    else
+                    echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+
+                    echo '</div>
+                    </div>';
                         }
             }
             ?>
+
 </div>
+        <?php //\yii\widgets\Pjax::end(); ?>
         </div>
     </div>
 

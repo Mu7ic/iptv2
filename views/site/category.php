@@ -5,7 +5,7 @@
 use yii\helpers\Url;
 
 $this->title = 'Категория';
-
+$epgid=\app\models\Control::getCoockie();
 ?>
 
 <div class='container'>
@@ -29,8 +29,8 @@ $this->title = 'Категория';
                 Yii::$app->session->set('channel',$obj);
                 foreach ($obj as $arr) {
                     echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
-                    <div class="card">
-                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">
+                    <div class="card" data-id="' . $arr['epgid'] . '">
+                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" >
                     <div class="channel position-relative w-100">
                     <div class="ch-img position-absolute">
                     <img src="' .Yii::$app->request->baseUrl.'/'. strtolower($arr['logo']) . '" alt="'.$arr['name'].'">
@@ -47,9 +47,15 @@ $this->title = 'Категория';
                     </div>
                     </div>
                     </div>
-                    </a><i class="fr favorite mdi mdi-bookmark-outline"></i>
-                    </div></div>';
-                        }
+                    </a>';
+                    if(in_array($arr['epgid'],$epgid))
+                        echo '<i class="fr favorite mdi mdi-bookmark"></i>';
+                    else
+                        echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+
+                    echo '</div>
+                    </div>';
+                }
             }
             ?>
 </div>

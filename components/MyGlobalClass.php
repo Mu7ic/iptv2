@@ -5,8 +5,8 @@ namespace app\components;
 use yii\web\Session;
 use Yii;
 class MyGlobalClass extends \yii\base\Component{
-    public $ip="http://217.11.179.169";
-    //public $ip="http://192.168.100.104";
+    //public $ip="http://217.11.179.169";
+    public $ip="http://192.168.100.104";
 
     public function init() {
 

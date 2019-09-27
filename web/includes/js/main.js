@@ -202,9 +202,9 @@ function read_channels () {
 				//$('#allchannels').html('<div class="col-12"><div class="title">Все каналы</div></div>' + html_channel);
 				//$('#recomended').html(html_channel_rec);
 				if (html_channel_fav != "") {
-					$('#favorites').html(html_channel_fav);
+					//$('#favorites').html(html_channel_fav);
 				}else{
-					$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
+					//$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
 				}
 			} else{
 				$('#allchannels').html('<div class="col-12"><p>Нет данных...</p></div>');
@@ -231,23 +231,23 @@ read_channels();
 // 	Cookies.set('ch-favorites', JSON.stringify(a));
 //
 // });
-    $('.favorite').click(function () {
-        $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
-        var p = $(this).parent();
-        var a = {};
-
-
-        if (Cookies.get('ch-favorites')) {
-            a = JSON.parse(Cookies.get('ch-favorites'));
-        }
-        if (a[p.children('a').attr('data-id')]) {
-            delete a[p.children('a').attr('data-id')];
-        } else {
-            a[p.children('a').attr('data-id')] = p.children('a').attr('data-id');
-        }
-        Cookies.set('ch-favorites', JSON.stringify(a));
-
-    });
+//     $('.favorite').click(function () {
+//         $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
+//         var p = $(this).parent();
+//         var a = {};
+//
+//
+//         if (Cookies.get('ch-favorites')) {
+//             a = JSON.parse(Cookies.get('ch-favorites'));
+//         }
+//         if (a[p.children('a').attr('data-id')]) {
+//             delete a[p.children('a').attr('data-id')];
+//         } else {
+//             a[p.children('a').attr('data-id')] = p.children('a').attr('data-id');
+//         }
+//         Cookies.set('ch-favorites', JSON.stringify(a));
+//
+//     });
 
 
 Date.prototype.ddmm = function() {
@@ -269,12 +269,12 @@ date.setDate(date.getDate() + 2);
 
 setTimeout( function () {
 	$('#allchannels, #recomended').on("click", "a", function() {
-		Cookies.set('ch-id', $(this).attr('data-id'));
-		Cookies.set('ch-profile', $(this).attr('data-profile'));
-		Cookies.set('ch-channelid', $(this).attr('data-channelid'));
-		Cookies.set('ch-link', $(this).attr('data-link'));
-		Cookies.set('ch-port', $(this).attr('data-port'));
-		Cookies.set('ch-name', $(this).find('h4').text());  
+		//Cookies.set('ch-id', $(this).attr('data-id'));
+		//Cookies.set('ch-profile', $(this).attr('data-profile'));
+		//Cookies.set('ch-channelid', $(this).attr('data-channelid'));
+		//Cookies.set('ch-link', $(this).attr('data-link'));
+		//Cookies.set('ch-port', $(this).attr('data-port'));
+		//Cookies.set('ch-name', $(this).find('h4').text());
 	});
 } ,150);
 if ($('.s-video')) {
@@ -285,15 +285,15 @@ if ($('.s-video')) {
 $(document).ready(function () {
 	$.ajax({
 		url: "https://robita.tj/programm.php?id=" + Cookies.set('ch-id'),
-		dataType: "JSON",  
+		dataType: "JSON",
 		success: function(chlist) {
-			chl = chlist; 
-			var	iconplay =""; 			
+			chl = chlist;
+			var	iconplay ="";
 			var ptime = moment().format("YYYY-MM-DD");
 			var now = moment().add(1,'days').format("YYYY-MM-DD");
 			var tomorrow = moment().add(2,'days').format("YYYY-MM-DD");
 			if(chl.length!=0){
-				for(var i=0; i < chl.length-1; i++){ 
+				for(var i=0; i < chl.length-1; i++){
 					ptime = moment(chl[i].start, "YYYYMMDDHHmmss").format("HH:mm");
 
 					if (tomorrow == moment(chl[i].start, "YYYYMMDDHHmmss").format("YYYY-MM-DD")) {
@@ -302,15 +302,15 @@ $(document).ready(function () {
 						$("#nav-d2").append('<div class="d-inline-block transmission ' + ( i==0 ? "active":"" ) + ' mb-2 w-100"><div class="w-100"><div class="name"><b>' + ptime + '</b> ' + chl[i].title + '</div>' + (i==0 ? '<i class="mdi mdi-play tn"></i>' : '') + '</div><div>');
 
 					}
-				} 
+				}
 			}else{
 				$('.psvprog').hide();
 				$('.vrow').addClass('justify-content-center');
 			}
-			
-		} 
+
+		}
 	});
-}); 
+});
 
 const player = new Plyr('#player', {
 	autoplay: true, 
