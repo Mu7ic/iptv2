@@ -34,10 +34,6 @@ $categor=$_SESSION['category'];
 </head>
 <body class="tn collapsed">
 <?php $this->beginBody() ?>
-<div class="alert alert-success" id="success-alert">
-    <button type="button" class="close" data-dismiss="alert">x</button>
-    <strong>Успех! </strong> Видео добавлено в избранные.
-</div>
 <?php //Pjax::begin(['timeout'=>30000]); ?>
         <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
