@@ -17,8 +17,21 @@ class SiteController extends Controller
 
     //public $ip="http://217.11.179.169";
     public $ip="http://192.168.100.104";
+    public $domain="http://iptv.robita.tj";
     /**
      * {@inheritdoc}
+     */
+
+    public static function allowedDomains() {
+        return [
+            // '*',                        // star allows all domains
+            'http://iptv.robita.tj',
+            //'http://test2.example.com',
+        ];
+    }
+
+    /**
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -38,6 +51,16 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                ],
+            ],
+            'corsFilter'  => [
+                'class' => \yii\filters\Cors::className(),
+                'cors'  => [
+                    // restrict access to domains:
+                    'Origin'                           => static::allowedDomains(),
+                    'Access-Control-Request-Method'    => ['POST'],
+                    'Access-Control-Allow-Credentials' => true,
+                    'Access-Control-Max-Age'           => 3600,                 // Cache (seconds)
                 ],
             ],
         ];
@@ -108,7 +131,7 @@ class SiteController extends Controller
                     $cookies->add(new Cookie([
                         'name' => $cookie_name,
                         'value' => json_encode($array),
-                        'domain' => 'iptv',
+                        'domain' => $this->domain,
                         'expire' => time() + 60*60*24*30,
                     ]));
                     }
@@ -117,7 +140,7 @@ class SiteController extends Controller
                     $cookies->add(new Cookie([
                         'name' => $cookie_name,
                         'value' => json_encode($array),
-                        'domain' => 'iptv',
+                        'domain' => $this->domain,
                         'expire' => time() + 60*60*24*30,
                     ]));
                 }
@@ -127,7 +150,7 @@ class SiteController extends Controller
                 $cookies->add(new Cookie([
                     'name' => $cookie_name,
                     'value' => json_encode($array),
-                    'domain' => 'iptv',
+                    'domain' => $this->domain,
                     'expire' => time() + 60*60*24*30,
                 ]));
             }
