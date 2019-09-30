@@ -279,33 +279,33 @@ if ($('.s-video')) {
 	//$('title').text(Cookies.set('ch-name'));
 }   
 $(document).ready(function () {
-	$.ajax({
-		url: "https://robita.tj/programm.php?id=" + Cookies.set('ch-id'),
-		dataType: "JSON",
-		success: function(chlist) {
-			chl = chlist;
-			var	iconplay ="";
-			var ptime = moment().format("YYYY-MM-DD");
-			var now = moment().add(1,'days').format("YYYY-MM-DD");
-			var tomorrow = moment().add(2,'days').format("YYYY-MM-DD");
-			if(chl.length!=0){
-				for(var i=0; i < chl.length-1; i++){
-					ptime = moment(chl[i].start, "YYYYMMDDHHmmss").format("HH:mm");
-
-					if (tomorrow == moment(chl[i].start, "YYYYMMDDHHmmss").format("YYYY-MM-DD")) {
-						$("#nav-d3").append('<div class="d-inline-block transmission ' + ( i==0 ? "active":"" ) + ' mb-2 w-100"><div class="w-100"><div class="name"><b>' + ptime + '</b> ' + chl[i].title + '</div>' + (i==0 ? '<i class="mdi mdi-play tn"></i>' : '') + '</div><div>');
-					}else if(now ==moment(chl[i].start, "YYYYMMDDHHmmss").format("YYYY-MM-DD")){
-						$("#nav-d2").append('<div class="d-inline-block transmission ' + ( i==0 ? "active":"" ) + ' mb-2 w-100"><div class="w-100"><div class="name"><b>' + ptime + '</b> ' + chl[i].title + '</div>' + (i==0 ? '<i class="mdi mdi-play tn"></i>' : '') + '</div><div>');
-
-					}
-				}
-			}else{
-				$('.psvprog').hide();
-				$('.vrow').addClass('justify-content-center');
-			}
-
-		}
-	});
+	// $.ajax({
+	// 	url: "https://robita.tj/programm.php?id=" + Cookies.set('ch-id'),
+	// 	dataType: "JSON",
+	// 	success: function(chlist) {
+	// 		chl = chlist;
+	// 		var	iconplay ="";
+	// 		var ptime = moment().format("YYYY-MM-DD");
+	// 		var now = moment().add(1,'days').format("YYYY-MM-DD");
+	// 		var tomorrow = moment().add(2,'days').format("YYYY-MM-DD");
+	// 		if(chl.length!=0){
+	// 			for(var i=0; i < chl.length-1; i++){
+	// 				ptime = moment(chl[i].start, "YYYYMMDDHHmmss").format("HH:mm");
+    //
+	// 				if (tomorrow == moment(chl[i].start, "YYYYMMDDHHmmss").format("YYYY-MM-DD")) {
+	// 					$("#nav-d3").append('<div class="d-inline-block transmission ' + ( i==0 ? "active":"" ) + ' mb-2 w-100"><div class="w-100"><div class="name"><b>' + ptime + '</b> ' + chl[i].title + '</div>' + (i==0 ? '<i class="mdi mdi-play tn"></i>' : '') + '</div><div>');
+	// 				}else if(now ==moment(chl[i].start, "YYYYMMDDHHmmss").format("YYYY-MM-DD")){
+	// 					$("#nav-d2").append('<div class="d-inline-block transmission ' + ( i==0 ? "active":"" ) + ' mb-2 w-100"><div class="w-100"><div class="name"><b>' + ptime + '</b> ' + chl[i].title + '</div>' + (i==0 ? '<i class="mdi mdi-play tn"></i>' : '') + '</div><div>');
+    //
+	// 				}
+	// 			}
+	// 		}else{
+	// 			$('.psvprog').hide();
+	// 			$('.vrow').addClass('justify-content-center');
+	// 		}
+    //
+	// 	}
+	// });
 });
 
 const player = new Plyr('#player', {

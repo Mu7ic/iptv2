@@ -17,7 +17,7 @@ class SiteController extends Controller
 
     //public $ip="http://217.11.179.169";
     public $ip="http://192.168.100.104";
-    public $domain="iptv.robita.tj";
+    public $domain="iptv";
     /**
      * {@inheritdoc}
      */
@@ -131,7 +131,7 @@ class SiteController extends Controller
                     $cookies->add(new Cookie([
                         'name' => $cookie_name,
                         'value' => json_encode($array),
-                        'domain' => $this->domain,
+                       // 'domain' => $this->domain,
                         'expire' => time() + 60*60*24*30,
                     ]));
                     }
@@ -140,7 +140,7 @@ class SiteController extends Controller
                     $cookies->add(new Cookie([
                         'name' => $cookie_name,
                         'value' => json_encode($array),
-                        'domain' => $this->domain,
+                     //   'domain' => $this->domain,
                         'expire' => time() + 60*60*24*30,
                     ]));
                 }
@@ -150,7 +150,7 @@ class SiteController extends Controller
                 $cookies->add(new Cookie([
                     'name' => $cookie_name,
                     'value' => json_encode($array),
-                    'domain' => $this->domain,
+                   // 'domain' => $this->domain,
                     'expire' => time() + 60*60*24*30,
                 ]));
             }

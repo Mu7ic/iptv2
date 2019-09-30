@@ -20,7 +20,7 @@ $config = [
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'enableCookieValidation' => true,
+                'enableCookieValidation' => true,
             'cookieValidationKey' => '0dRiYXydyy9jTa7p7zFes9-WNpbcyroH',
             'enableCsrfValidation' => false,
             'baseUrl' => ''

@@ -82,13 +82,11 @@ $categor=$_SESSION['category'];
 <?php $this->endBody() ?>
 </body>
 <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/app.js'></script>
-<?php //if(substr(Yii::$app->request->url,1,6)=="chanel"){ ?>
+<?php if(substr(Yii::$app->request->url,1,6)=="chanel"){ ?>
 <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/main.js'></script>
-<?php //}else {
-    ?>
+<?php } ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/script.js'></script>
-<?php
-//} ?>
+
 </html>
 <?php $this->endPage() ?>
