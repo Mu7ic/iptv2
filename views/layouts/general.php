@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\widgets\Pjax;
 use yii\helpers\Url;
+use app\models\Mobile_Detect;
 
 //AppAsset::register($this);
 $categor=$_SESSION['category'];
@@ -36,149 +37,11 @@ $categor=$_SESSION['category'];
 
     <?php $this->head() ?>
 </head>
-<body class="tn collapsed">
+<body class="tn <?php $detect = new Mobile_Detect(); if($detect->isAndroidOS()) ''; else echo 'collapsed'; ?>">
 <?php $this->beginBody() ?>
 <?php //Pjax::begin(['timeout'=>30000]); ?>
         <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
-<style type="text/css">
-    .full {
-        width: 100%;
-    }
-    .gap {
-        height: 30px;
-        width: 100%;
-        clear: both;
-        display: block;
-    }
-    .footer {
-        background: #4e256b;
-        height: auto;
-        padding-bottom: 30px;
-        position: relative;
-        width: 100%;
-        border-top: 1px solid #371b4c;
-    }
-    .footer p {
-        margin: 0;
-    }
-    .footer img {
-        max-width: 100%;
-    }
-    .footer h3 {
-        border-bottom: 1px solid #371b4c;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 27px;
-        padding: 40px 0 10px;
-        text-transform: uppercase;
-    }
-    .footer ul {
-        font-size: 13px;
-        list-style-type: none;
-        margin-left: 0;
-        padding-left: 0;
-        margin-top: 15px;
-        color: #7F8C8D;
-    }
-    .footer ul li a {
-        padding: 0 0 5px 0;
-        display: block;
-    }
-    .footer a {
-        color: #fff;
-    }
-    .supportLi h4 {
-        font-size: 20px;
-        font-weight: lighter;
-        line-height: normal;
-        margin-bottom: 0 !important;
-        padding-bottom: 0;
-    }
-    .newsletter-box input#appendedInputButton {
-        background: #FFFFFF;
-        display: inline-block;
-        float: left;
-        height: 30px;
-        clear: both;
-        width: 100%;
-    }
-    .newsletter-box .btn {
-        border: medium none;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        -o-border-radius: 3px;
-        -ms-border-radius: 3px;
-        border-radius: 3px;
-        display: inline-block;
-        height: 40px;
-        padding: 0;
-        width: 100%;
-        color: #fff;
-    }
-    .newsletter-box {
-        overflow: hidden;
-    }
-    .bg-gray {
-        /*background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);*/
-        /*box-shadow: 0 1px 0 #B4B3B3;*/
-    }
-    .social li {
-        background: none repeat scroll 0 0 #B5B5B5;
-        border: 2px solid #B5B5B5;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -o-border-radius: 50%;
-        -ms-border-radius: 50%;
-        border-radius: 50%;
-        float: left;
-        height: 36px;
-        line-height: 36px;
-        margin: 0 8px 0 0;
-        padding: 0;
-        text-align: center;
-        width: 36px;
-        transition: all 0.5s ease 0s;
-        -moz-transition: all 0.5s ease 0s;
-        -webkit-transition: all 0.5s ease 0s;
-        -ms-transition: all 0.5s ease 0s;
-        -o-transition: all 0.5s ease 0s;
-    }
-    .social li:hover {
-        transform: scale(1.15) rotate(360deg);
-        -webkit-transform: scale(1.1) rotate(360deg);
-        -moz-transform: scale(1.1) rotate(360deg);
-        -ms-transform: scale(1.1) rotate(360deg);
-        -o-transform: scale(1.1) rotate(360deg);
-    }
-    .social li a {
-        color: #EDEFF1;
-    }
-    .social li:hover {
-        border: 2px solid #2c3e50;
-        background: #2c3e50;
-    }
-    .social li a i {
-        font-size: 16px;
-        margin: 0 0 0 5px;
-        color: #EDEFF1 !important;
-    }
-    .footer-bottom {
-        background: #642887;
-        border-top: 1px solid #371b4c;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        height: 50px;
-        color: #fff;
-    }
-    .footer-bottom p.pull-left {
-        padding-top: 6px;
-    }
-    .payments {
-        font-size: 1.5em;
-    }
-</style>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <div class='page-container tn'>
     <div class='top sn-page fixed tn'>
@@ -209,6 +72,18 @@ $categor=$_SESSION['category'];
                         </li>
                     </ul>
                 </div>
+                <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+                    <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center"  data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+                        <img class="mr-2 rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" width="40" height="40" alt="avatar">
+                        <div class="media-body">
+                            +992928888888
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0);">Logout</a>
+                        </ul>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -224,22 +99,20 @@ $categor=$_SESSION['category'];
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                         <h3> Соглашения </h3>
                         <ul>
-                            <li> <a href="#"> Условия сотрудничества </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#">Условия сотрудничества </a> </li>
+                            <li> <a href="#">Руководства использования </a> </li>
+                            <li> <a href="#">Термины </a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
 
                     </div>
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> О Робитаи нав </h3>
+                        <h3> Меню </h3>
                         <ul>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Все каналы </a> </li>
+                            <li> <a href="#"> Избранные </a> </li>
+                            <li> <a href="#"> Обратная связь </a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">

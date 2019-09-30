@@ -163,6 +163,11 @@ class SiteController extends Controller
         return $this->render('favorites');
     }
 
+    public function actionProfile()
+    {
+        return $this->render('profile');
+    }
+
     /**
      * Login action.
      *

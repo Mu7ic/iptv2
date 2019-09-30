@@ -66,7 +66,7 @@ use \yii\helpers\Url;
             </a>
         </li> -->
         <li>
-            <a class='nav-link' href='<?= Url::toRoute(['site/index']); ?>'>
+            <a class='nav-link' href='<?= Url::toRoute(['site/profile']); ?>'>
                 <i class="mdi mdi-account-settings-variant"></i>
                 <span>Профиль</span>
             </a>
