@@ -17,7 +17,7 @@ class SiteController extends Controller
 
     //public $ip="http://217.11.179.169";
     public $ip="http://192.168.100.104";
-    public $domain="http://192.168.100.12";
+    public $domain="iptv";
     /**
      * {@inheritdoc}
      */
@@ -25,7 +25,7 @@ class SiteController extends Controller
     public static function allowedDomains() {
         return [
             // '*',                        // star allows all domains
-            'http://192.168.100.12',
+            'http://iptv.robita.tj',
             //'http://test2.example.com',
         ];
     }
@@ -109,7 +109,7 @@ class SiteController extends Controller
         //unset(Yii::$app->request->cookies['test']);
         if(Yii::$app->request->post()){
           $array=[];
-        echo  $id=Yii::$app->request->post('id');
+        $id=Yii::$app->request->post('id');
 
          // $cookies->remove($cookie_name);
 

@@ -17,7 +17,8 @@ $this->title = 'Главная IpTv';
 //echo '<pre>';
 $epgid=\app\models\Control::getCoockie();
 //Yii::$app->request->cookies->removeAll();
-var_dump(\app\models\Control::getCoockie());
+//var_dump(\app\models\Control::getCoockie());
+var_dump(Yii::$app->request->cookies['id_channels']);
 //echo '</pre>';
 // или
 //echo Yii::$app->request->cookies->getValue('ch-favorites');
