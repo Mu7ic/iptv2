@@ -17,7 +17,7 @@ class SiteController extends Controller
 
     //public $ip="http://217.11.179.169";
     public $ip="http://192.168.100.104";
-    public $domain="iptv";
+    public $domain="iptv.robita.tj";
     /**
      * {@inheritdoc}
      */
