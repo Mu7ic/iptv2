@@ -545,7 +545,7 @@ body.collapsed .top{
 } 
 .middle{
   padding: 65px 0 0 0;
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 290px);
 }
 .middle.d-page{
   padding: 0;
