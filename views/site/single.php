@@ -36,7 +36,9 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
     <div class='pr-lg-3 pl-lg-3'>
         <div class='row'>
             <div class='col-12'>
-                <div class='s-p title'></div>
+                <div class='s-p title' style="margin-left: 15px;">
+                    <?= $name; ?>
+                </div>
             </div>
             <div class="col-12">
                 <div class="card tr-n">
@@ -115,7 +117,7 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
                                 echo '<div class="progressbars"><div class="progress" start="10:25" stop="12:10">';
                                 echo '<div class="before">' . date('H:i', strtotime($arr['current']['starttime'])) . '</div>';
                                 echo '<div class="after">' . date('H:i', strtotime($arr['current']['endtime'])) . '</div>';
-                                echo '<div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
+                                echo '<div class="progress-bar" role="progressbar" style="width: '.\app\models\Control::getPercentTime($arr['current']['starttime'],$arr['current']['endtime']).'%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
                                 echo '</div></div></div></div></a>';
                                 if(in_array($arr['epgid'],$epgid))
                                     echo '<i class="fr favorite mdi mdi-bookmark"></i>';
