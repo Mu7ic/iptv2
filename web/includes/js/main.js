@@ -41,10 +41,6 @@
 			} ,8000)
 
 		}
-	}); 
-	//collapse
-	$(".ic-menu, .bg-black").on("click", function(){
-		$("body").toggleClass('collapsed');
 	});
 	//menu slider
 	var whatTab = $(".s-menu ul li.active").index();
@@ -145,76 +141,76 @@
 	});
 
 // --------------------------------------------------------------------- //
-function read_channels () {
-	$.ajax({
-		url: 'http://192.168.100.104:7678/tv/get_channel.php',
-		type: 'GET',
-		success: function (data) {
-
-			n = JSON.parse(data);
-
-			var a = {};
-			var max = 10;
-			if (Cookies.get('ch-favorites')) {
-				a = JSON.parse(Cookies.get('ch-favorites'));
-			}
-			var logo_ch
-			var html_channel="";
-			var html_channel_rec="";
-			var html_channel_fav="";
-			var r_number={};
-			var ii=0;
-			var number=null;
-			while(ii<9){
-				number=Math.floor((Math.random() * n.length-1) + 1);
-				if(r_number[number]==undefined){
-					r_number[number]=number;
-					var icon_ = '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
-					if (n[number].logo == "") {
-						logo_ch	='<img src="/assets/img/tv.png">'
-					}else{
-						logo_ch	='<img src="/assets/img/' + n[number].name.toLowerCase() + '.png" alt="">'
-					}
-
-					html_channel_rec+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[number].id + '" data-profile="' + n[number].profile + '" data-channelid="' + n[number].channelid + '" data-port="' + n[number].port + '" data-link="' + n[number].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[number].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
-
-					ii++;
-
-				}
-			}
-			for(var i=0; i < n.length-1; i++){
-				var icon_ = '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
-				if (n[i].logo == "") {
-					logo_ch	='<img src="/assets/img/tv.png">'
-				}else{
-					logo_ch	='<img src="/assets/img/' + n[i].name.toLowerCase() + '.png" alt="">'
-				}
-				if (a[ n[i].id ] != undefined) {
-					icon_ = '<i class="fr favorite mdi mdi-bookmark"></i>';
-					html_channel_fav+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[i].id + '" data-profile="' + n[i].profile + '" data-channelid="' + n[i].channelid + '" data-port="' + n[i].port + '" data-link="' + n[i].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[i].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
-				}
-
-				html_channel+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[i].id + '" data-profile="' + n[i].profile + '" data-channelid="' + n[i].channelid + '" data-port="' + n[i].port + '" data-link="' + n[i].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[i].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
-
-			}
-			if (n.length > 0) {
-
-				//$('#allchannels').html('<div class="col-12"><div class="title">Все каналы</div></div>' + html_channel);
-				//$('#recomended').html(html_channel_rec);
-				if (html_channel_fav != "") {
-					//$('#favorites').html(html_channel_fav);
-				}else{
-					//$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
-				}
-			} else{
-				$('#allchannels').html('<div class="col-12"><p>Нет данных...</p></div>');
-				$('#recomended').html('<div class="col-12"><p>Нет данных...</p></div>');
-				$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
-			}
-		}
-	});
-}
-read_channels();
+// function read_channels () {
+// 	$.ajax({
+// 		url: 'http://192.168.100.104:7678/tv/get_channel.php',
+// 		type: 'GET',
+// 		success: function (data) {
+//
+// 			n = JSON.parse(data);
+//
+// 			var a = {};
+// 			var max = 10;
+// 			if (Cookies.get('ch-favorites')) {
+// 				a = JSON.parse(Cookies.get('ch-favorites'));
+// 			}
+// 			var logo_ch
+// 			var html_channel="";
+// 			var html_channel_rec="";
+// 			var html_channel_fav="";
+// 			var r_number={};
+// 			var ii=0;
+// 			var number=null;
+// 			while(ii<9){
+// 				number=Math.floor((Math.random() * n.length-1) + 1);
+// 				if(r_number[number]==undefined){
+// 					r_number[number]=number;
+// 					var icon_ = '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+// 					if (n[number].logo == "") {
+// 						logo_ch	='<img src="/assets/img/tv.png">'
+// 					}else{
+// 						logo_ch	='<img src="/assets/img/' + n[number].name.toLowerCase() + '.png" alt="">'
+// 					}
+//
+// 					html_channel_rec+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[number].id + '" data-profile="' + n[number].profile + '" data-channelid="' + n[number].channelid + '" data-port="' + n[number].port + '" data-link="' + n[number].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[number].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
+//
+// 					ii++;
+//
+// 				}
+// 			}
+// 			for(var i=0; i < n.length-1; i++){
+// 				var icon_ = '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+// 				if (n[i].logo == "") {
+// 					logo_ch	='<img src="/assets/img/tv.png">'
+// 				}else{
+// 					logo_ch	='<img src="/assets/img/' + n[i].name.toLowerCase() + '.png" alt="">'
+// 				}
+// 				if (a[ n[i].id ] != undefined) {
+// 					icon_ = '<i class="fr favorite mdi mdi-bookmark"></i>';
+// 					html_channel_fav+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[i].id + '" data-profile="' + n[i].profile + '" data-channelid="' + n[i].channelid + '" data-port="' + n[i].port + '" data-link="' + n[i].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[i].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
+// 				}
+//
+// 				html_channel+='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4"><div class="card" ><a href="singlepage.html" data-id="' + n[i].id + '" data-profile="' + n[i].profile + '" data-channelid="' + n[i].channelid + '" data-port="' + n[i].port + '" data-link="' + n[i].link + '"><div class="channel position-relative w-100"> <div class="ch-img position-absolute">' + logo_ch + '</div><div class="ch-data h-100"><h4 class="w-100">' + n[i].name + '</h4><p>Передача...</p><div class="progressbars"><div class="progress" start="10:25" stop="12:10"><div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div></div></div></div></a>' + icon_ + '</div></div>';
+//
+// 			}
+// 			if (n.length > 0) {
+//
+// 				//$('#allchannels').html('<div class="col-12"><div class="title">Все каналы</div></div>' + html_channel);
+// 				//$('#recomended').html(html_channel_rec);
+// 				if (html_channel_fav != "") {
+// 					//$('#favorites').html(html_channel_fav);
+// 				}else{
+// 					//$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
+// 				}
+// 			} else{
+// 				$('#allchannels').html('<div class="col-12"><p>Нет данных...</p></div>');
+// 				$('#recomended').html('<div class="col-12"><p>Нет данных...</p></div>');
+// 				$('#favorites').html('<div class="col-12"><p>Нет данных...</p></div>');
+// 			}
+// 		}
+// 	});
+// }
+// read_channels();
 // $('#allchannels, #favorites, #recomended').on("click", ".favorite", function () {
 // 	read_channels();
 //  	$(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
