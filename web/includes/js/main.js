@@ -114,10 +114,6 @@
 		}  
 	},200); 
 
-	$('.show-more').on('click', function () {
-		$(this).toggleClass('showed');
-	});
-
 	resizeColl();
 
 	$(window).resize(function () {
