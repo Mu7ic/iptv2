@@ -307,7 +307,8 @@ $(document).ready(function () {
 const player = new Plyr('#player', {
 	autoplay: true, 
 	volume: 1,
-	controls: ['play-large', 'play', 'progress', 'volume', 'mute', 'captions',  'pip', 'airplay', 'fullscreen'],
+	// controls: ['play-large', 'play', 'settings','progress', 'volume', 'mute', 'captions',  'pip', 'airplay', 'fullscreen'],
+	controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
 	title: 'Example Title',
 });
 
