@@ -308,8 +308,10 @@ const player = new Plyr('#player', {
 	autoplay: true, 
 	volume: 1,
 	// controls: ['play-large', 'play', 'settings','progress', 'volume', 'mute', 'captions',  'pip', 'airplay', 'fullscreen'],
-	controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+	controls: ['play-large', 'play', 'progress','mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
 	title: 'Example Title',
+	quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] },
+    settings: ['captions', 'quality', 'speed', 'loop'],
 });
 
 var elem = document.getElementById("player");

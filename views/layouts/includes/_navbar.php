@@ -7,7 +7,7 @@ use \yii\helpers\Url;
     <div class="tabs">
         <div class="nav nav-tabs tn" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-tv-tab" data-toggle="tab" href="#nav-tv" role="tab" aria-controls="nav-tv" aria-selected="true">ТВ</a>
-            <a class="nav-item nav-link disabled" id="nav-radio-tab" data-toggle="tab" href="#nav-radio" role="tab" aria-controls="nav-radio" aria-selected="false">Радио</a>
+<!--            <a class="nav-item nav-link disabled" id="nav-radio-tab" data-toggle="tab" href="#nav-radio" role="tab" aria-controls="nav-radio" aria-selected="false">Радио</a>-->
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane pt-2 fade show active" id="nav-tv" role="tabpanel" aria-labelledby="nav-tv-tab">

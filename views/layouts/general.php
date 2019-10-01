@@ -123,7 +123,7 @@ $categor=$_SESSION['category'];
                         <ul>
                             <li>
                                 <div class="input-append newsletter-box text-center">
-                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <input type="text" class="full text-center" placeholder="">
                                     <button class="btn  bg-gray" type="button"> Подпишитесь на рассылку <i class="fa fa-long-arrow-right"> </i> </button>
                                 </div>
                             </li>
@@ -131,7 +131,7 @@ $categor=$_SESSION['category'];
                         <ul class="social">
                             <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
                             <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-instagram">   </i> </a> </li>
                             <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
                             <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
                         </ul>
@@ -145,7 +145,7 @@ $categor=$_SESSION['category'];
 
         <div class="footer-bottom">
             <div class="container">
-                <p class="pull-left"> Copyright © Робитани нав <?= date('Y',strtotime('2019')); ?>.</p>
+                <p class="pull-left"> Copyright © <a href="https://robita.tj/">Робитаи нав</a> совместно с <a href="https://www.tcell.tj">Tcell</a> <?= date('Y',strtotime('2019')); ?>.</p>
                 <div class="pull-right">
 <!--                   <img src="--><?//= Yii::$app->request->baseUrl; ?><!--/includes/img/logo_tcell.png">-->
 <!--                    с сотрудничестве-->

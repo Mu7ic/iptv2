@@ -48,7 +48,7 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
                                 <div class="s-video-p">
                                     <video poster="<?= Yii::$app->request->baseUrl; ?>/includes/img/vbg.png" id="player"
                                            class='s-video w-100 tn' playsinline controls>
-                                        <source src="http://<?php  $domain=parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST); if($domain=="192.168.100.12") echo $ip; else echo "217.11.179.169"; ?>:<?php if($ip=="192.168.100.33") echo '9981';elseif($ip=="192.168.100.35") echo '9982'; ?>/stream/channelid/<?= $id; ?>?profile=webtv-vp8-vorbis-webm">
+                                        <source src="http://<?php  $domain=parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST); if($domain=="192.168.100.12") echo $ip; elseif($domain=="217.11.179.169") echo "217.11.179.169";else echo $ip; ?>:<?php if($ip=="192.168.100.33") echo '9981';elseif($ip=="192.168.100.35") echo '9982'; ?>/stream/channelid/<?= $id; ?>?profile=webtv-vp8-vorbis-webm">
                                     </video>
                                 </div>
                             </div>
