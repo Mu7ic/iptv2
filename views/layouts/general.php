@@ -110,8 +110,8 @@ $categor=$_SESSION['category'];
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                         <h3> Меню </h3>
                         <ul>
-                            <li> <a href="#"> Все каналы </a> </li>
-                            <li> <a href="#"> Избранные </a> </li>
+                            <li> <a href="<?= Url::toRoute(['site/index']); ?>"> Все каналы </a> </li>
+                            <li> <a href="<?= Url::to(['site/favorits']) ?>"> Избранные </a> </li>
                             <li> <a href="#"> Обратная связь </a> </li>
                         </ul>
                     </div>

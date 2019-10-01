@@ -42,6 +42,8 @@ $epgid=\app\models\Control::getCoockie();
         <div class="col-12">
             <div class="title">Все каналы</div>
         </div>';
+                Yii::$app->session->open();
+                Yii::$app->session->set('channel',$obj);
                 foreach ($obj as $arr) {
                     echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
                     <div class="card" data-id="' . $arr['epgid'] . '">
