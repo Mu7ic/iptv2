@@ -250,7 +250,8 @@ class SiteController extends Controller
         return $this->render('single', ['today' => $today, 'tomorrow' => $tomorrow, 'after' => $after,'category_id'=>$obj['category_id'],
             'id'=>$obj['channleid'],
             'ip'=>$obj['ip'] /*'217.11.179.169'*/,
-            'name'=>$obj['name']
+            'name'=>$obj['name'],
+            'logo'=>$obj['logo']
         ]);
     }
 

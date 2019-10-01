@@ -37,7 +37,7 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
         <div class='row'>
             <div class='col-12'>
                 <div class='s-p title' style="margin-left: 15px;">
-                    <?= $name; ?>
+                   <img width="30" height="30" src="<?= Yii::$app->request->baseUrl; ?>/<?= $logo; ?>"> <?= $name; ?>
                 </div>
             </div>
             <div class="col-12">

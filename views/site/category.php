@@ -4,7 +4,12 @@
 
 use yii\helpers\Url;
 
-$this->title = 'Категория';
+$category=Yii::$app->session->get('category');
+
+$key = array_search($_GET['category'], array_column($category, 'id'));
+//var_dump($category[$key]['name']);
+
+$this->title = $category[$key]['name'];
 $epgid=\app\models\Control::getCoockie();
 ?>
 
@@ -23,10 +28,8 @@ $epgid=\app\models\Control::getCoockie();
             } else {
                 echo '
         <div class="col-12">
-            <div class="title">Все каналы</div>
+            <div class="title">'.$category[$key]['name'].'  </div>
         </div>';
-                Yii::$app->session->open();
-                Yii::$app->session->set('channel',$obj);
                 foreach ($obj as $arr) {
                     echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
                     <div class="card" data-id="' . $arr['epgid'] . '">
