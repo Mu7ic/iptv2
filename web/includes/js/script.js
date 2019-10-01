@@ -112,6 +112,9 @@
 	$('.show-more').on('click', function () {
 		$(this).toggleClass('showed');
 	});
+	$('.show-must-go').on('click', function () {
+		$('.show-must-go-on').toggleClass('show-on');
+	});
 
 	resizeColl();
 

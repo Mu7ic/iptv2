@@ -782,6 +782,17 @@ hr{
   background-color: #f5f5f5;
   position: relative; 
 }
+
+.show-must-go i{
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  display: inline-block;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  position: relative;
+}
 #nav-tab-2 a {
   color: #831dbf;
 }
@@ -792,10 +803,25 @@ hr{
 #nav-tab-2 {
   border-bottom: 1px solid #9c2cde;
 }
+
+.show-on{
+  display: block;
+}
+
 .show-more.showed i{
   transform: rotate(180deg);
 }
+.show-must-go.showed i{
+  transform: rotate(180deg);
+}
 .show-more i:before{
+  position:absolute;
+  top:  50%;
+  left:   50%;
+  transform:  translate(-50%, -48%);
+}
+
+.show-must-go i:before{
   position:absolute;
   top:  50%;
   left:   50%;
@@ -1192,6 +1218,11 @@ body .transmission.active {
  h3{
   font-size: 18px;
 }
+  
+  .show-on{
+    display: none;
+  }
+  
 .nav-right .sub-menu{
   position: fixed;
   right: 5%;

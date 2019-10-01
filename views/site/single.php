@@ -99,7 +99,7 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
             </div>
         </div>
         <div id="recomended1" class="row">
-            <div class="row w-100 /*ustify-content-center*/ align-items-center">
+            <div class="row w-100">
 
                 <?php
                 if (!empty($channel)) {
@@ -140,6 +140,70 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
 
             </div>
         </div>
+<!--        -->
+        <div>
+            <div class="show-must-go cursor-pointer pt-2 w-100 text-center d-md-none d-lg-none"><i class="mdi tn mdi-chevron-down"></i>
+            </div>
+        <div class="show-must-go-on show-on">
+        <?php
+        $category=Yii::$app->session->get('category');
+        foreach ($category as $c){
+            if ($c['id'] != $category_id) {
+
+                ?>
+        <div id="recomended1" class="row">
+            <div class="col-12">
+                <div class="title"><?= $c['name']; ?></div>
+            </div>
+            <div class="row w-100 align-items-center">
+
+                <?php
+                if (!empty($channel)) {
+                    foreach ($channel as $arr) {
+
+
+                            if ($arr['category'] == $c['id']) {
+                            if ($arr['epgid'] != $_GET['id']) {
+                                echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">';
+                                echo '<div class="card" data-id="' . $arr['epgid'] . '">';
+                                echo '<a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">';
+                                echo '<div class="channel position-relative w-100"> <div class="ch-img position-absolute">';
+                                echo '<img src="' . Yii::$app->request->baseUrl . '/' . strtolower($arr['logo']) . '" alt="' . $arr['name'] . '"></div>';
+                                echo '<div class="ch-data h-100"><h4 class="w-100">' . $arr['name'] . '</h4>';
+                                echo '<p>' . $arr['current']['title'] . '</p>';
+                                echo '<div class="progressbars"><div class="progress" start="10:25" stop="12:10">';
+                                echo '<div class="before">' . date('H:i', strtotime($arr['current']['starttime'])) . '</div>';
+                                echo '<div class="after">' . date('H:i', strtotime($arr['current']['endtime'])) . '</div>';
+                                echo '<div class="progress-bar" role="progressbar" style="width: '.\app\models\Control::getPercentTime($arr['current']['starttime'],$arr['current']['endtime']).'%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
+                                echo '</div></div></div></div></a>';
+                                if(in_array($arr['epgid'],$epgid))
+                                    echo '<i class="fr favorite mdi mdi-bookmark"></i>';
+                                else
+                                    echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+                                echo '</div></div>';
+                            }
+                            }
+                    }
+                } else {
+                    echo '                <div class="col-1">
+                    <div class="lds-dual-ring">
+                    </div>
+                </div>';
+                }
+                //                echo '<pre>';
+                //                var_dump($channel);
+                //                echo '</pre>';
+                ?>
+
+            </div>
+        </div>
+        <?php
+            }}
+        ?>
+        </div>
+        </div>
+
+        <!--        -->
     </div>
 </div>
 <script src="<?= Yii::$app->request->baseUrl; ?>/includes/js/moment.min.js"></script>

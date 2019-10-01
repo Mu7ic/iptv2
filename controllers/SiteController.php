@@ -89,8 +89,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $json = file_get_contents($this->ip.':7678/tv/get_channel.php');
-        $obj = json_decode($json, true);
+        $obj=Yii::$app->session->get('channel');
 
         return $this->render('index',['obj'=>$obj]);
     }
