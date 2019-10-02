@@ -551,7 +551,6 @@ body.collapsed .top{
   padding: 0;
 }
 .middle .title{
-  display: block;
   font-size: 16px;
   font-weight: 500;
   color: #831dbf;
@@ -806,6 +805,10 @@ hr{
 
 .show-on{
   display: block;
+}
+
+.show-fav{
+  display: none;
 }
 
 .show-more.showed i{
@@ -1102,6 +1105,21 @@ body.collapsed .ch-dark, .sidebar:hover .ch-dark{
   color: #fff;
 }
 
+
+
+.row-mobile{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -10px;
+}
+
+.show-off{
+  display: none;
+}
+
 /* -----*/
 
 
@@ -1221,6 +1239,19 @@ body .transmission.active {
   
   .show-on{
     display: none;
+  }
+  .show-fav{
+    display: block;
+  }
+
+  .row-mobile{
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    /*padding-right: 15px;*/
+    padding-left: 15px;
   }
   
 .nav-right .sub-menu{

@@ -73,19 +73,25 @@ $aft = $w2 . ' ' . $d2 . ' ' . $m2;
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
+                                    <? if(!empty($today)){?>
                                     <div class="tn tab-pane pt-2 fade show active scroll-y" id="nav-d1" role="tabpanel"
                                          aria-labelledby="nav-d1-tab">
                                         <?= //var_dump($today);
                                         \app\models\Control::getTvHistory($today, true); ?>
                                     </div>
-                                    <div class="tn tab-pane pt-2 fadescroll-y" id="nav-d2" role="tabpanel"
+                                    <?php } ?>
+                                    <? if(!empty($tomorrow)){?>
+                                    <div class="tn tab-pane pt-2 fade scroll-y" id="nav-d2" role="tabpanel"
                                          aria-labelledby="nav-d2-tab">
                                         <?= \app\models\Control::getTvHistory($tomorrow, false); ?>
                                     </div>
+                                    <?php } ?>
+                                    <? if(!empty($after)){?>
                                     <div class="tn tab-pane pt-2 fade scroll-y" id="nav-d3" role="tabpanel"
                                          aria-labelledby="nav-d3-tab">
                                         <?= \app\models\Control::getTvHistory($after, false); ?>
                                     </div>
+                                    <?php } ?>
                                     <div class="show-more cursor-pointer pt-2 w-100 text-center d-md-none d-lg-none"><i
                                                 class='mdi tn mdi-chevron-down'></i></div>
                                 </div>

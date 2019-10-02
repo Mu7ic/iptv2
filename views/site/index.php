@@ -23,7 +23,27 @@ $epgid=\app\models\Control::getCoockie();
 //echo Yii::$app->request->cookies->getValue('ch-favorites');
 
 ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#channel').click(function (e) {
+            e.preventDefault();
+            //alert('ddasd');
+            $('#nav-d1').removeClass("show-on");
+            $('#nav-d1').addClass("show-fav");
+            $('#nav-d2').removeClass("show-fav");
+            $('#nav-d2').addClass("show-on");
+        });
 
+        $('#favorit').click(function (e) {
+            e.preventDefault();
+            //alert('ddasd');
+            $('#nav-d2').removeClass("show-on");
+            $('#nav-d1').removeClass("show-fav");
+            $('#nav-d2').addClass("show-fav");
+            $('#nav-d1').addClass("show-on");
+        });
+    });
+</script>
 <div class='container'>
     <div class='pr-lg-3 pl-lg-3'>
         <?php //\yii\widgets\Pjax::begin(['timeout'=>5000]); ?>
@@ -39,11 +59,11 @@ $epgid=\app\models\Control::getCoockie();
         </div>';
             } else {
                 echo '
-        <div class="col-12">
-            <div class="title">Все каналы</div>
-        </div>';
-                Yii::$app->session->open();
-                Yii::$app->session->set('channel',$obj);
+        <div class="col-12" role="tablist">
+            <div class="title pull-left" id="channel">Все каналы</div>
+            <div class="title pull-right show-fav" id="favorit">Избранные</div>
+        </div>
+        <div class="row-mobile" id="nav-d1">';
                 foreach ($obj as $arr) {
                     echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
                     <div class="card" data-id="' . $arr['epgid'] . '">
@@ -73,6 +93,40 @@ $epgid=\app\models\Control::getCoockie();
                     echo '</div>
                     </div>';
                         }
+                        echo '</div>';
+                echo '<div class="row-mobile show-off show-on" id="nav-d2">';
+                foreach ($obj as $arr) {
+                    if(in_array($arr['epgid'],$epgid)){
+                    echo '<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
+                    <div class="card" data-id="' . $arr['epgid'] . '">
+                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" >
+                    <div class="channel position-relative w-100">
+                    <div class="ch-img position-absolute">
+                    <img src="' .Yii::$app->request->baseUrl.'/'. strtolower($arr['logo']) . '" alt="'.$arr['name'].'">
+                    </div>
+                    <div class="ch-data h-100">
+                    <h4 class="w-100">' . $arr['name'] . '</h4>
+                    <p>'.$arr['current']['title'].'</p>
+                    <div class="progressbars">
+                    <div class="before">'.date('H:i',strtotime($arr['current']['starttime'])).'</div>
+                                        <div class="after">'.date('H:i',strtotime($arr['current']['endtime'])).'</div>
+                    <div class="progress" start="10:25" stop="12:10">
+                    <div class="progress-bar" role="progressbar" style="width: '.\app\models\Control::getPercentTime($arr['current']['starttime'],$arr['current']['endtime']).'%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </a>';
+                    if(in_array($arr['epgid'],$epgid))
+                        echo '<i class="fr favorite mdi mdi-bookmark"></i>';
+                    else
+                        echo '<i class="fr favorite mdi mdi-bookmark-outline"></i>';
+
+                    echo '</div>
+                    </div>';
+                }
+                }
+                echo '</div';
             }
             ?>
 
