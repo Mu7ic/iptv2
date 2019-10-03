@@ -37,12 +37,28 @@ $categor=$_SESSION['category'];
 
     <?php $this->head() ?>
 </head>
+<script>
+    $(document).ready(function () {
+        $('.show-alert').click(function (e) {
+            e.preventDefault();
+            //alert('ddasd');
+            $('.alert').addClass('show');
+            window.setTimeout(function(){
+                $('.alert').removeClass('show');
+            },3000);
+        });
+    });
+</script>
 <body class="tn <?php $detect = new Mobile_Detect(); if($detect->isAndroidOS()) ''; else echo 'collapsed'; ?>">
 <?php $this->beginBody() ?>
-<?php //Pjax::begin(['timeout'=>30000]); ?>
         <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<?php Pjax::begin(['timeout'=>30000]); ?>
+<div class="alert alert-primary alert-dismissible fade" style="position: fixed;right: 0;top: 70px;z-index: 10000;">
+    <strong>Внимание!</strong> Данный раздел находиться на стадии  <a href="#" class="alert-link">разработки</a>.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
 <div class='page-container tn'>
     <div class='top sn-page fixed tn'>
         <div class="container-fluid">
@@ -99,9 +115,9 @@ $categor=$_SESSION['category'];
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
                         <h3> Соглашения </h3>
                         <ul>
-                            <li> <a href="#">Условия сотрудничества </a> </li>
-                            <li> <a href="#">Руководства использования </a> </li>
-                            <li> <a href="#">Термины </a> </li>
+                            <li> <a class="show-alert" href="#">Условия сотрудничества </a> </li>
+                            <li> <a class="show-alert" href="#">Руководства использования </a> </li>
+                            <li> <a class="show-alert" href="#">Термины </a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
@@ -112,7 +128,7 @@ $categor=$_SESSION['category'];
                         <ul>
                             <li> <a href="<?= Url::toRoute(['site/index']); ?>"> Все каналы </a> </li>
                             <li> <a href="<?= Url::to(['site/favorits']) ?>"> Избранные </a> </li>
-                            <li> <a href="#"> Обратная связь </a> </li>
+                            <li> <a href="#" class="show-alert"> Обратная связь </a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
@@ -124,7 +140,7 @@ $categor=$_SESSION['category'];
                             <li>
                                 <div class="input-append newsletter-box text-center">
                                     <input type="text" class="full text-center" placeholder="">
-                                    <button class="btn  bg-gray" type="button"> Подпишитесь на рассылку <i class="fa fa-long-arrow-right"> </i> </button>
+                                    <button class="btn  bg-gray show-alert" type="button"> Подпишитесь на рассылку <i class="fa fa-long-arrow-right"> </i> </button>
                                 </div>
                             </li>
                         </ul>

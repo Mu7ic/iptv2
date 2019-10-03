@@ -219,6 +219,25 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionEdit(){
+        if(Yii::$app->request->post()){
+             $name=Yii::$app->request->post('name');
+             $address=Yii::$app->request->post('address');
+             $member=Yii::$app->request->post('member');
+             $cookies=Yii::$app->response->cookies;
+                 $array=['name'=>$name,'address'=>$address,'member'=>$member];
+                 $cookies->add(new Cookie([
+                     'name' => 'user',
+                     'value' => json_encode($array),
+                     // 'domain' => $this->domain,
+                     'expire' => time() + 60*60*24*30,
+                 ]));
+
+             return $this->redirect(['site/profile']);
+        }else
+       return $this->render('edit');
+    }
+
     /**
      * Displays about page.
      *

@@ -1,5 +1,10 @@
 <?php
+$this->title='Профиль';
 
+$user=Yii::$app->request->cookies;
+if($user->has('user')) {
+    $member = json_decode($user->get('user'), true);
+}else $member="";
 ?>
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -10,33 +15,30 @@
 
 
                 <div class="profile-card py-3 card text-center">
-                    <a class="btn-edit" href="">
+                    <a class="btn-edit" style="cursor: pointer" href="<?= \yii\helpers\Url::to(['edit']) ?>">
                         <i class="fa fa-edit"></i>
                     </a>
                     <div class="card-body py-4">
                         <img class="profile-picture rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" />
                         <h2 class="text-dark h5 font-weight-bold mt-4 mb-1">
-                            Amanda H. Burgess
+                            <span id="hname"><?= !empty($member) ? $member['name'] : 'Amanda H. Burgess' ?></span>
                         </h2>
                         <p class="text-muted font-weight-bold small">
                             <i class="fa fa-map-marker"></i>
-                            15 Eagle Way, AL10 BRD
+                            <span id="haddress"><?= !empty($member) ? $member['address'] : '15 Eagle Way, AL10 BRD' ?></span>
                         </p>
                         <p class="px-1 mt-4 mb-4 text-muted quote-text">
                             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.
                         </p>
                         <div class="d-flex px-1 w-100 align-items-center text-left">
                             <div class="w-100">
-                                <label class="mb-1 font-weight-light text-muted small text-uppercase">Membership</label>
+                                <label class="mb-1 font-weight-light text-muted small text-uppercase">Подписка</label>
                                 <strong class="d-block text-warning">
                                     <i class="fa fa-star"></i>
-                                    Gold Member
+                                    <?= !empty($member) ? $member['member'] : 'Золотой' ?>
                                 </strong>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-outline-success">
-                                    Renew
-                                </button>
                             </div>
                         </div>
                         <h5 class="mt-4 pt-3 h6 text-muted mb-0">Get Connected</h5>
@@ -48,8 +50,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
             </div>
         </div>
