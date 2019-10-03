@@ -19,7 +19,7 @@ if($user->has('user')) {
                         <i class="fa fa-edit"></i>
                     </a>
                     <div class="card-body py-4">
-                        <img class="profile-picture rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" />
+<!--                        <img class="profile-picture rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" />-->
                         <h2 class="text-dark h5 font-weight-bold mt-4 mb-1">
                             <span id="hname"><?= !empty($member) ? $member['name'] : 'Amanda H. Burgess' ?></span>
                         </h2>
