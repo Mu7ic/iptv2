@@ -116,6 +116,12 @@
 		$('.show-must-go-on').toggleClass('show-on');
 	});
 
+	$('.btn-user').on('click', function () {
+		$('#sidebar').toggleClass('show');
+	});
+
+
+
 	resizeColl();
 
 	$(window).resize(function () {

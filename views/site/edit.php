@@ -23,7 +23,7 @@ $array=['Серебренный','Золотой','VIP'];
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="pwd">Адрес</label>
                         <div class="col-sm-10">
-                            <input type="text" name="address" <?= !empty($member) ? 'value="'.$member['name'].'"' : '' ?> class="form-control" id="pwd" placeholder="Напишите свой адрес">
+                            <input type="text" name="address" <?= !empty($member) ? 'value="'.$member['address'].'"' : '' ?> class="form-control" id="pwd" placeholder="Напишите свой адрес">
                         </div>
                     </div>
                     <div class="form-group">
