@@ -72,13 +72,13 @@ $categor=$_SESSION['category'];
                         </li>
                     </ul>
                 </div>
-                <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
-                    <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center"  data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+                <div class="show-on">
+                    <a href="javascript:void(0);" class="btn-user media align-items-center">
                         <img class="mr-2 rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" width="40" height="40" alt="avatar">
                         <div class="media-body">
                             +992928888888
                         </div>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <ul id="sidebar" class="dropdown-menu dropdown-menu-right" role="menu">
                             <a class="dropdown-item" href="javascript:void(0);">Edit Profile</a>
                             <a class="dropdown-item" href="javascript:void(0);">Logout</a>
                         </ul>
