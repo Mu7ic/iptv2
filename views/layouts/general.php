@@ -90,7 +90,7 @@ $categor=$_SESSION['category'];
                 </div>
                 <div class="show-on">
                     <a href="javascript:void(0);" class="btn-user media align-items-center">
-                        <img class="mr-2 rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" width="40" height="40" alt="avatar">
+                        <img class="mr-2 rounded-circle" src="https://via.placeholder.com/40.png" width="40" height="40" alt="avatar">
                         <div class="media-body">
                             +992928888888
                         </div>

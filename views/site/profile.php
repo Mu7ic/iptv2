@@ -21,14 +21,11 @@ if($user->has('user')) {
                     <div class="card-body py-4">
 <!--                        <img class="profile-picture rounded-circle" src="https://randomuser.me/api/portraits/women/63.jpg" />-->
                         <h2 class="text-dark h5 font-weight-bold mt-4 mb-1">
-                            <span id="hname"><?= !empty($member) ? $member['name'] : 'Amanda H. Burgess' ?></span>
+                            <span id="hname"><?= !empty($member) ? $member['name'] : '' ?></span>
                         </h2>
                         <p class="text-muted font-weight-bold small">
                             <i class="fa fa-map-marker"></i>
-                            <span id="haddress"><?= !empty($member) ? $member['address'] : '15 Eagle Way, AL10 BRD' ?></span>
-                        </p>
-                        <p class="px-1 mt-4 mb-4 text-muted quote-text">
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.
+                            <span id="haddress"><?= !empty($member) ? $member['address'] : '' ?></span>
                         </p>
                         <div class="d-flex px-1 w-100 align-items-center text-left">
                             <div class="w-100">
@@ -41,7 +38,7 @@ if($user->has('user')) {
                             <div>
                             </div>
                         </div>
-                        <h5 class="mt-4 pt-3 h6 text-muted mb-0">Get Connected</h5>
+                        <h5 class="mt-4 pt-3 h6 text-muted mb-0"></h5>
                         <div class="d-flex social-section justify-content-center">
                             <a href=""><i class="fa fa fa-facebook"></i></a>
                             <a href=""><i class="fa fa fa-twitter"></i></a>
