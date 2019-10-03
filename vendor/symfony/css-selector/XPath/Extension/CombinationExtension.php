@@ -28,7 +28,7 @@ class CombinationExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getCombinationTranslators(): array
+    public function getCombinationTranslators()
     {
         return [
             ' ' => [$this, 'translateDescendant'],
@@ -38,7 +38,10 @@ class CombinationExtension extends AbstractExtension
         ];
     }
 
-    public function translateDescendant(XPathExpr $xpath, XPathExpr $combinedXpath): XPathExpr
+    /**
+     * @return XPathExpr
+     */
+    public function translateDescendant(XPathExpr $xpath, XPathExpr $combinedXpath)
     {
         return $xpath->join('/descendant-or-self::*/', $combinedXpath);
     }
