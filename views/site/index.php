@@ -62,10 +62,8 @@ $epgid=\app\models\Control::getCoockie();
                 echo '
 <div class="full-width-tabs">
         <ul id="tabs" class="nav nav-tabus">
-            <li class="take-all-space-you-can title show-fav active" style="text-align: left;padding:10px;border-top: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;" ><a class="chan">Все каналы</a></li>
-            <li class="take-all-space-you-can title show-fav" style="text-align: left;padding:10px;border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;"><a class="favor">Избранные</a></li>
+            <li class="take-all-space-you-can title show-fav active" style="text-align: left;padding:10px;" ><a class="chan">Все каналы</a></li>
+            <li class="take-all-space-you-can title show-fav" style="text-align: left;padding:10px;"><a class="favor">Избранные</a></li>
         </ul>
 </div>
         <div class="row-mobile" id="nav-d1">';
