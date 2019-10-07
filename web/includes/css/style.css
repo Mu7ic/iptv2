@@ -1273,18 +1273,22 @@ body .transmission.active {
   min-width: auto; 
 }
 
-  .full-width-tabs > ul.nav.nav-tabs {
+  .full-width-tabs > ul.nav.nav-tabus {
     display: table;
     width: 100%;
     table-layout: fixed;
   }
-  .full-width-tabs > ul.nav.nav-tabs > li {
+  .full-width-tabs > ul.nav.nav-tabus > li {
     float: none;
     display: table-cell;
     background: #5a128e;
     color: white;
+    border-bottom: 5px solid transparent;
   }
-  .full-width-tabs > ul.nav.nav-tabs > li > a {
+  .full-width-tabs > ul.nav.nav-tabus > li.active {
+    border-bottom: 5px solid #ffffff;
+  }
+  .full-width-tabs > ul.nav.nav-tabus > li > a {
     text-align: center;
   }
   .take-all-space-you-can{

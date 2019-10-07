@@ -27,6 +27,8 @@ $epgid=\app\models\Control::getCoockie();
 <script type="text/javascript">
     $(document).ready(function () {
         $('.chan').click(function (e) {
+            $(this).parent().addClass('active');
+            $('.favor').parent().removeClass('active');
             e.preventDefault();
             //alert('ddasd');
             $('#nav-d1').show();
@@ -35,6 +37,8 @@ $epgid=\app\models\Control::getCoockie();
 
         $('.favor').click(function (e) {
             e.preventDefault();
+            $('.chan').parent().removeClass('active');
+            $(this).parent().addClass('active');
             //alert('ddasd');
             $('#nav-d2').show();
             $('#nav-d1').hide();
@@ -57,9 +61,11 @@ $epgid=\app\models\Control::getCoockie();
             } else {
                 echo '
 <div class="full-width-tabs">
-        <ul id="tabs" class="nav nav-tabs">
-            <li class="take-all-space-you-can title show-fav" style="text-align: left;padding:10px;" ><a class="chan">Все каналы</a></li>
-            <li class="take-all-space-you-can title show-fav" style="text-align: left;padding:10px;"><a class="favor">Избранные</a></li>
+        <ul id="tabs" class="nav nav-tabus">
+            <li class="take-all-space-you-can title show-fav active" style="text-align: left;padding:10px;border-top: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;" ><a class="chan">Все каналы</a></li>
+            <li class="take-all-space-you-can title show-fav" style="text-align: left;padding:10px;border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;"><a class="favor">Избранные</a></li>
         </ul>
 </div>
         <div class="row-mobile" id="nav-d1">';
