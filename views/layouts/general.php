@@ -55,7 +55,7 @@ $categor=$_SESSION['category'];
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <?php Pjax::begin(['timeout'=>30000]); ?>
-<div class="alert alert-primary alert-dismissible fade" style="position: fixed;right: 0;top: 70px;z-index: 10000;">
+<div class="alert alert-primary alert-dismissible fade" style="position: fixed;right: 0;top: 110px;z-index: 10000;">
     <strong>Внимание!</strong> Данный раздел находиться на стадии  <a href="#" class="alert-link">разработки</a>.
     <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
@@ -63,7 +63,7 @@ $categor=$_SESSION['category'];
     <div class='top sn-page fixed tn'>
         <div class="container-fluid">
             <div class="row align-items-center justify-content-between">
-                <div class='w-25 nav-left'>
+                <div class='nav-left'>
                     <div class='fl ic-menu'>
                         <i class='fl block'>
                             <i class='fl tn'></i>
@@ -77,7 +77,10 @@ $categor=$_SESSION['category'];
                         </a>
                     </div>
                 </div>
-                <div class='w-50 nav-right'>
+                <div class="logo-title">
+                    Robita TV
+                </div>
+                <div class='nav-right'>
                     <ul class='fr'>
                         <li class='fl ic-menu m-o'>
                             <i class='fl block'>
@@ -88,6 +91,7 @@ $categor=$_SESSION['category'];
                         </li>
                     </ul>
                 </div>
+
                 <div class="show-on">
                     <a href="javascript:void(0);" class="btn-user media align-items-center">
                         <img class="mr-2 rounded-circle" src="https://via.placeholder.com/40.png" width="40" height="40" alt="avatar">

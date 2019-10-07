@@ -554,7 +554,7 @@ body.collapsed .top{
   font-size: 16px;
   font-weight: 500;
   color: #831dbf;
-  margin: 15px 0;
+  margin: 7px 0;
   letter-spacing: 0.5px;
 }  
 /* ---------------------------- */
@@ -1151,6 +1151,9 @@ body.collapsed .ch-dark, .sidebar:hover .ch-dark{
   color: #831dbf !important;
 } 
  
+.logo-title{
+  display: none;
+}
 /* animation ic menu */
 
 
@@ -1269,6 +1272,35 @@ body .transmission.active {
   left: auto;
   min-width: auto; 
 }
+
+  .full-width-tabs > ul.nav.nav-tabs {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  .full-width-tabs > ul.nav.nav-tabs > li {
+    float: none;
+    display: table-cell;
+    background: #5a128e;
+    color: white;
+  }
+  .full-width-tabs > ul.nav.nav-tabs > li > a {
+    text-align: center;
+  }
+  .take-all-space-you-can{
+    width:100%;
+  }
+
+  .logo-title{
+    font-family: Palatino Linotype;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: normal;
+    line-height: 0.5px;
+    font-weight: 600;
+    font-style: italic;
+    display: block;
+  }
 }
 /* media screen 2 */
 @media screen and (min-width: 480px) and (max-width: 579px){
