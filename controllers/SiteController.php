@@ -277,43 +277,31 @@ class SiteController extends Controller
 
     public function actionNotice()
     {
-       // if (Yii::$app->request->get('id')){
             $epgid=\app\models\Control::getCoockie();
             $obj=Yii::$app->session->get('channel');
             $html="";
             foreach ($obj as $arr) {
                 if(in_array($arr['epgid'],$epgid)){
-                    $html.='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">
-                    <div class="card" data-id="' . $arr['epgid'] . '">
-                    <a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" >
-                    <div class="channel position-relative w-100">
-                    <div class="ch-img position-absolute">
-                    <img src="' .Yii::$app->request->baseUrl.'/'. strtolower($arr['logo']) . '" alt="'.$arr['name'].'">
-                    </div>
-                    <div class="ch-data h-100">
-                    <h4 class="w-100">' . $arr['name'] . '</h4>
-                    <p>'.$arr['current']['title'].'</p>
-                    <div class="progressbars">
-                    <div class="before">'.date('H:i',strtotime($arr['current']['starttime'])).'</div>
-                                        <div class="after">'.date('H:i',strtotime($arr['current']['endtime'])).'</div>
-                    <div class="progress" start="10:25" stop="12:10">
-                    <div class="progress-bar" role="progressbar" style="width: '.\app\models\Control::getPercentTime($arr['current']['starttime'],$arr['current']['endtime']).'%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </a>';
+                    $html.='<div class="col-md-6 col-lg-4 mb-2 mb-lg-4">';
+                    $html.='<div class="card" data-id="' . $arr['epgid'] . '">';
+                    $html.='<a href="' . Url::to(['site/single', 'id' => $arr['epgid']]) . '" data-id="' . $arr['id'] . '" data-profile="' . $arr['profile'] . '" data-channelid="' . $arr['chanelid'] . '" data-port="' . $arr['port'] . '" data-link="' . $arr['link'] . '">';
+                    $html.='<div class="channel position-relative w-100"> <div class="ch-img position-absolute">';
+                    $html.='<img src="' . Yii::$app->request->baseUrl . '/' . strtolower($arr['logo']) . '" alt="' . $arr['name'] . '"></div>';
+                    $html.='<div class="ch-data h-100"><h4 class="w-100">' . $arr['name'] . '</h4>';
+                    $html.='<p>' . $arr['current']['title'] . '</p>';
+                    $html.='<div class="progressbars"><div class="progress" start="10:25" stop="12:10">';
+                    $html.='<div class="before">' . date('H:i', strtotime($arr['current']['starttime'])) . '</div>';
+                    $html.='<div class="after">' . date('H:i', strtotime($arr['current']['endtime'])) . '</div>';
+                    $html.='<div class="progress-bar" role="progressbar" style="width: '.\app\models\Control::getPercentTime($arr['current']['starttime'],$arr['current']['endtime']).'%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
+                    $html.='</div></div></div></div></a>';
                     if(in_array($arr['epgid'],$epgid))
                         $html.='<i class="fr favorite mdi mdi-bookmark"></i>';
                     else
                         $html.='<i class="fr favorite mdi mdi-bookmark-outline"></i>';
-
-                    $html.='</div>
-                    </div>';
+                    $html.='</div></div>';
                 }
             }
             return $html;
-     //  }
     }
     public function actionAll()
     {
