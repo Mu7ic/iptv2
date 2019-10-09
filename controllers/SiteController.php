@@ -312,7 +312,7 @@ class SiteController extends Controller
                     </div>';
                 }
             }
-            echo $html;
+            return $html;
      //  }
     }
     public function actionAll()
