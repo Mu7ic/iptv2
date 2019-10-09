@@ -10,6 +10,13 @@ class MyGlobalClass extends \yii\base\Component{
 
     public function init() {
 
+        $domain=parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+        if($domain=="192.168.100.12") $this->ip="192.168.100.104";
+        elseif ($domain=='217.11.179.169') $this->ip="217.11.179.169";
+        else{
+            $this->ip="217.11.179.169";
+        }
+
         //session_start();
         Yii::$app->session->open();
         //$session->set('category','');
