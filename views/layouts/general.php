@@ -33,7 +33,8 @@ $categor=$_SESSION['category'];
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/fonts/mdi/css/materialdesignicons.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/style.css'>
-    <script src="<?php Yii::$app->request->baseUrl; ?>/includes/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="<?php Yii::$app->request->baseUrl; ?>/includes/js/jquery.pjax.js"></script>
 
     <?php $this->head() ?>
 </head>
@@ -43,19 +44,26 @@ $categor=$_SESSION['category'];
             e.preventDefault();
             //alert('ddasd');
             $('.alert').addClass('show');
+            $('.alert').removeClass('visible');
             window.setTimeout(function(){
                 $('.alert').removeClass('show');
+                $('.alert').addClass('visible');
             },3000);
         });
     });
 </script>
+<style>
+    .visibl1e{
+        visibility: hidden;
+    }
+</style>
 <body class="tn <?php $detect = new Mobile_Detect(); if($detect->isAndroidOS()) ''; else echo 'collapsed'; ?>">
 <?php $this->beginBody() ?>
         <?= Yii::$app->controller->renderPartial('/layouts/includes/_navbar',['category'=>$categor]); ?>
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<?php Pjax::begin(['timeout'=>30000]); ?>
-<div class="alert alert-primary alert-dismissible fade" style="position: fixed;right: 0;top: 110px;z-index: 10000;">
+<?php Pjax::begin(['timeout'=>30000,'id'=>'pjax']); ?>
+<div class="alert alert-primary alert-dismissible visibl1e" style="position: fixed;right: 0;top: 110px;z-index: 10000;">
     <strong>Внимание!</strong> Данный раздел находиться на стадии  <a href="#" class="alert-link">разработки</a>.
     <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>

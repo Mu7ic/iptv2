@@ -143,28 +143,32 @@
 	// 		$("LINK[href='/assets/css/dark.css']").remove();
 	// 	}
 	// });
+    $(document).on('click','.favorite',function(){
+      //  $('.favorite').click(function () {
+            $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
+            var id = $(this).parent().attr('data-id');
 
-    $('.favorite').click(function () {
-        $(this).toggleClass('mdi-bookmark-outline mdi-bookmark');
-        var id = $(this).parent().attr('data-id');
+            $.ajax({
+                url: '/site/test',
+                type: 'POST',
+                data: {id: id},
+                success: function (data) {
+                    //alert(data)
+                    // $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                    //     $("#success-alert").slideUp(500);
+                    // });
+                    //location.reload();
+                },
+                error: function(jqXHR, errMsg) {
+                    // handle error
+                    alert(errMsg);
+                }
+            });
 
-        $.ajax({
-            url: '/site/test',
-            type: 'POST',
-            data: {id: id},
-            success: function (data) {
-                //alert(data)
-                $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
-                    $("#success-alert").slideUp(500);
-                });
-			},
-            error: function(jqXHR, errMsg) {
-                // handle error
-                alert(errMsg);
-            }
-        });
+       // });
+	});
 
-    });
+
 
 
 })(jQuery);
