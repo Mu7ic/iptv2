@@ -33,7 +33,7 @@ $categor=$_SESSION['category'];
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/fonts/mdi/css/materialdesignicons.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/style.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="<?php Yii::$app->request->baseUrl; ?>/includes/js/jquery.min.js"></script>
     <script src="<?php Yii::$app->request->baseUrl; ?>/includes/js/jquery.pjax.js"></script>
 
     <?php $this->head() ?>
