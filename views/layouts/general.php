@@ -25,10 +25,10 @@ $categor=$_SESSION['category'];
 <!--    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>-->
     <title><?= Html::encode($this->title) ?></title>
     <?= Html::csrfMetaTags() ?>
-    <link rel="icon" href="https://robita.tj/wp-content/uploads/2018/10/favicon-150x150.png" sizes="32x32">
-    <link rel="icon" href="https://robita.tj/wp-content/uploads/2018/10/favicon-300x300.png" sizes="192x192">
-    <link rel="apple-touch-icon-precomposed" href="https://robita.tj/wp-content/uploads/2018/10/favicon-300x300.png">
-    <meta name="msapplication-TileImage" content="https://robita.tj/wp-content/uploads/2018/10/favicon-300x300.png">
+    <link rel="icon" href="<?= Yii::$app->request->baseUrl; ?>/includes/img/favicon-150x150.png" sizes="32x32">
+    <link rel="icon" href="<?= Yii::$app->request->baseUrl; ?>/includes/img/favicon-300x300.png" sizes="192x192">
+    <link rel="apple-touch-icon-precomposed" href="<?= Yii::$app->request->baseUrl; ?>/includes/img/favicon-300x300.png">
+    <meta name="msapplication-TileImage" content="<?= Yii::$app->request->baseUrl; ?>/includes/img/favicon-300x300.png">
 <!--    <link rel="shortcut icon" href="--><?//= Yii::$app->request->baseUrl; ?><!--/includes/img/tv.png"/>-->
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?= Yii::$app->request->baseUrl; ?>/includes/fonts/mdi/css/materialdesignicons.min.css'>
@@ -191,7 +191,7 @@ $categor=$_SESSION['category'];
 <?php if(substr(Yii::$app->request->url,1,6)=="chanel"){ ?>
 <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/main.js'></script>
 <?php } ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="<?= Yii::$app->request->baseUrl; ?>/includes/js/jquery.cookie.js"></script>
     <script src='<?= Yii::$app->request->baseUrl; ?>/includes/js/script.js'></script>
 
 </html>
