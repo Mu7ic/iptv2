@@ -26,6 +26,10 @@ $epgid=\app\models\Control::getCoockie();
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $('.lds-dual-ring').addClass('show');
+        $(document).ajaxStop(function(){
+            $('.lds-dual-ring').removeClass('show');
+        });
         $('.chan').click(function (e) {
             $(this).parent().addClass('active');
             $('.favor').parent().removeClass('active');
@@ -36,7 +40,6 @@ $epgid=\app\models\Control::getCoockie();
                 type: 'GET',
                 data: {id: 1},
                 success: function (data) {
-                    $('.lds-dual-ring').removeClass('show');
                    //alert(data);
                     $('#nav-d1').html(data);
                 },
