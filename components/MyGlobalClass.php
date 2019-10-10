@@ -14,7 +14,7 @@ class MyGlobalClass extends \yii\base\Component{
         Yii::$app->session->open();
         //$session->set('category','');
         //$_SESSION['category']="";
-        if(empty($_SESSION['category'])){
+        //if(empty($_SESSION['category'])){
         $json = file_get_contents($this->ip.':7678/tv/category.php');
         $json_channel = file_get_contents($this->ip.':7678/tv/get_channel.php');
 
@@ -26,7 +26,7 @@ class MyGlobalClass extends \yii\base\Component{
         Yii::$app->session->set('category',$category);
         Yii::$app->session->set('channel',$obj);
 
-        }
+       // }
         //var_dump($category);
         //var_dump(Yii::$app->session->get('category'));
         parent::init();
